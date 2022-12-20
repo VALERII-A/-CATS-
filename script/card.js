@@ -11,10 +11,13 @@ class Card {
     this.element = this._getTemplate().cloneNode(true);
     const cardTitle = this.element.querySelector('.card__name');
     const cardImage = this.element.querySelector('.card__image');
+    const cardLike = this.element.querySelector('.card__like');
     cardTitle.textContent = this._data.name;
     cardImage.src = this._data.image;
 
+    if(!this._data.favorite) {
+      cardLike.classList.toggle('like-no-active')
+  }
     return this.element;
   }
 }
-const card = new Card(cats[0]);

@@ -1,40 +1,3 @@
-// - добавляет информацию о коте на сайт
-// - запрашивает все записи с котами
-// - запрашивает конкретную запись с котом
-// - редактирует информацию у конкретной записи с котом
-// - удаляет информацию о коте
-// - запрашивает все айдишники
-
-// Адрес API
-// https://cats.petiteweb.dev
-
-
-// GET - получить информацию обо всех котах
-// https://cats.petiteweb.dev/api/single/<name>/show
-
-// GET - получить массив всех существующих id
-// https://cats.petiteweb.dev/api/single/<name>/ids
-
-// GET - получить информацию об одном коте по id
-// https://cats.petiteweb.dev/api/single/<name>/show/<id кота>
-
-// POST - добавить нового кота (id, name - обязательно!)
-// https://cats.petiteweb.dev/api/single/<name>/add
-
-// PUT - изменить информацию о коте (запрещено менять id и name)
-// https://cats.petiteweb.dev/api/single/<name>/update/<id кота>
-
-// DELETE - удалить кота
-// DELETE https://cats.petiteweb.dev/api/single/<name/delete/<id кота>
-
-// Роутеры:
-// GET https://cats.petiteweb.dev/api/single/:user/show - отобразить всех котиков
-// GET https://cats.petiteweb.dev/api/single/:user/show/:id- отобразить все возможные айди котиков
-// GET https://cats.petiteweb.dev/api/single/:user/ids - отобразить конкретного котика
-// POST https://cats.petiteweb.dev/api/single/:user/add - добавить котика
-// PUT https://cats.petiteweb.dev/api/single/:user/update/:id - изменить информацию о котике
-// DELETE https://cats.petiteweb.dev/api/single/:user/delete/:id - удалить котика из базы данных
-
 const CONFIG_API = {
     url: 'https://cats.petiteweb.dev/api/single/cotobaza',
     headers: {
@@ -72,24 +35,24 @@ class Api {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: this._headers
-        })
+        }).then(this._onResponce)
     }
 
 
     getCatById(idCat){
         fetch(`${this._url}/show/${idCat}`, {
             method: 'GET',
-        })
+        }).then(this._onResponce)
     }
 
 
     deleteCatById(idCat){
         fetch(`${this._url}/delete/${idCat}`, {
             method: 'DELETE',
-        })
+        }).then(this._onResponce)
     }
-
-
 }
 
 const api = new Api(CONFIG_API);
+
+api.getAllCats()

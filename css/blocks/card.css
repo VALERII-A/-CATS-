@@ -8,7 +8,7 @@
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: fill;
 }
 .card__link {
   position: absolute;
@@ -43,6 +43,9 @@
   padding: 0;
   cursor: pointer;
   z-index: 2;
+}
+.like-no-active {
+  color: var(--text-secondary-color);
 }
 
 .card::before {

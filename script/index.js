@@ -11,10 +11,45 @@ btnOpenPopupForm.addEventListener('click', () => {
 });
 
 
-cats.forEach(function (catData) {
-  const cardInstance = new Card(catData, '#card-template');
+formCatAdd.addEventListener('submit',handleFormAddCat);
+
+function serializeForm (elements) {
+  const formData = {
+  };
+
+  elements.forEach((input)=> {
+    if (input.type === 'submit') return;
+
+    if (input.type !== 'checkbox') {
+      formData[input.name] = input.value
+    }
+    if (input.type === 'checkbox') {
+      formData[input.name] = input.checked;
+    }
+  })
+  return formData;  
+}
+
+function createCat(dataCat) {
+  const cardInstance = new Card(dataCat, '#card-template');
   const newCardElement = cardInstance.getElement();
   cardsContainer.append(newCardElement);
-});
+}
 
-console.log(cardsContainer);
+function handleFormAddCat (e) {
+  e.preventDefault();
+  const elementsFormCat = [...formCatAdd.elements];
+
+const dataFromForm = serializeForm(elementsFormCat);
+
+api.addNewCat(dataFromForm).then(()=>{
+  createCat(dataFromForm)
+})
+popupAddCat.close();
+}
+
+api.getAllCats().then((data) => {
+  data.forEach(function (catData) {
+    createCat(catData)
+  });
+});
