@@ -11,7 +11,6 @@ class Popup {
   }
   setEventListener() {
     this.popup.addEventListener('click', (evt) => {
-      console.log(evt.target.closest('.popup__close'));
       if (
         evt.target.classList.contains(this._className) ||
         !!evt.target.closest('.popup__close')
