@@ -1,10 +1,15 @@
 const cardsContainer = document.querySelector('.cards');
 const btnOpenPopupForm = document.querySelector('#add');
+const btnOpenPopupLogin = document.querySelector('#login');
+
 const formCatAdd = document.querySelector('#popup-form-cat');
 
 
 const popupAddCat = new Popup('popup-add-cats');
 popupAddCat.setEventListener();
+
+const popupLogin = new Popup('popup-login');
+popupLogin.setEventListener();
 
 btnOpenPopupForm.addEventListener('click', () => {
   popupAddCat.open();
@@ -12,6 +17,7 @@ btnOpenPopupForm.addEventListener('click', () => {
 
 
 formCatAdd.addEventListener('submit',handleFormAddCat);
+btnOpenPopupLogin.addEventListener('click', () => popupLogin.open());
 
 function serializeForm (elements) {
   const formData = {

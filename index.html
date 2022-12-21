@@ -11,8 +11,9 @@
   <body class="page">
     <header class="header">
       <div class="container header__container">
-        <a href="#" class="logo"><i class="fa-solid fa-paw fa-2x"></i> Cредиземные котики</a>
+        <a href="#" class="logo"><i class="fa-solid fa-paw fa-2x"></i> Котики</a>
         <button class="btn" id="add"><i class="fa-solid fa-plus"></i></button>
+        <button class="btn" id="login">Войти</button>
       </div>
     </header>
     <main class="main container">
@@ -50,6 +51,17 @@
           </form>
       </div>
   </div>
+  <div class="popup popup-login">
+    <div class="popup__container" >
+        <button class="popup__close btn"><i class="fa-solid fa-xmark"></i></button>
+        <h2>Авторизация</h2>
+        <form class="form" id="popup-form-login">
+            <input type="email" class="form__input" name="email" required placeholder="email">
+            <input type="password" class="form__input" name="password" placeholder="password">
+            <button type="submit" class="form__btn btn">Войти</button>
+        </form>
+    </div>
+</div>
     <template id="card-template">
       <div class="card">
         <img src="https://img2.joyreactor.cc/pics/post/%D0%BA%D0%BE%D1%82%D1%8D-%D0%92%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D0%BB%D0%B8%D0%BD-%D0%BA%D0%BE%D0%BB%D0%B5%D1%86-195070.jpeg" alt="Изображение" class="card__image">
